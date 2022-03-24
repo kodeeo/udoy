@@ -24,14 +24,13 @@
 
       @include('admin.fixed.sideber')
 
-
       @include('admin.fixed.header')
- 
 
-     <div id="page-wrapper">
+
+     <div class="card">
       @yield('content')
      </div>
-       
+
     </div><!-- /#wrapper -->
 
     <!-- JavaScript -->
