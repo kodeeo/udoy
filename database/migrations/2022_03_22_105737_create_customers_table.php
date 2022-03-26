@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('address');
             $table->integer('phone');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('country');
             $table->string('city');
             $table->timestamps();
