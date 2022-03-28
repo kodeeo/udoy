@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Category;
+
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::all();
-        return view('admin.pages.categories.index',compact('categories'));
+        $customers=Customer::all();
+        return view('admin.pages.customers.index',compact('customers'));
     }
 
     /**
@@ -24,7 +25,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.categories.create');
+        return view('admin.pages.customers.create');
+
     }
 
     /**
@@ -35,21 +37,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-
-            'category_name'=>'required',
-            'category_details'=>'required',
-        ]);
-
-        Category::create([
-            'name'=>$request->category_name,
-            'details'=>$request->category_details,
-
+        Customer::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>bcrypt($request->password),
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'city'=>$request->city,
+            'country'=>$request->country,
+            'image'=>$request->image,
            ]);
 
-           return redirect()->back()->with('success','Add Category Successfully');
-
+           return redirect()->back();
     }
 
     /**
@@ -60,7 +59,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $show=Customer::find($id);
+        return view('admin.pages.customers.show',compact('show'));
     }
 
     /**
@@ -71,8 +71,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $edit_category=Category::find($id);
-        return view('admin.pages.categories.edit',compact('edit_category'));
+        $edit=Customer::find($id);
+        return view('admin.pages.customers.edit',compact('edit'));
     }
 
     /**
@@ -84,12 +84,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $edit_category=Category::find($id);
-        $edit_category->update([
-            'name'=>$request->category_name,
-            'details'=>$request->category_details,
+        $edit=Customer::find($id);
+        $edit->update([
+            'name'=>$request->name,
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'city'=>$request->city,
+            'country'=>$request->country,
+            'image'=>$request->image,
         ]);
-        return redirect()->back()->with('success','Update Category Successfully');
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -100,7 +104,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $categories=Category::find($id)->delete();
-     return redirect()->back()->with('success','Category Deleted');
+        $customers=Customer::find($id)->delete();
+        return redirect()->back();
     }
 }

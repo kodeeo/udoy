@@ -4,7 +4,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav side-nav">
         <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href=""><i class="fa fa-dashboard"></i>Customer</a></li>
+        <li><a href="{{route('customers.index')}}"><i class="fa fa-dashboard"></i>Customer</a></li>
         <li><a href="{{route('category.index')}}"><i class="fa-brands fa-buffer"></i> Category</a></li>
       </li>
       <li><a href="{{route('product.view')}}"><i class="fa-solid fa-shirt"></i>Product</a></li>
