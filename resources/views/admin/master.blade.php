@@ -26,12 +26,12 @@
 
 
       @include('admin.fixed.header')
- 
 
-     <div id="page-wrapper">
+
+     <div class="container-fluid px-4 pt-3">
       @yield('content')
      </div>
-       
+
     </div><!-- /#wrapper -->
 
     <!-- JavaScript -->

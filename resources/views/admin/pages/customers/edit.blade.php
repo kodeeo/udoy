@@ -2,41 +2,38 @@
 @section('content')
 
 
-
-
-
-<div>
-            <h1>Update Information</h1>
+<div class="card" style="text-align:center; margin-left:10%; margin-right:10%;">
+            <h1>Update Customer Information</h1>
             <hr>
             <form action="{{route('customers.update',$edit->id)}}" method="POST">
                 @method('PUT')
                 @csrf
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputname">Name</label>
-                    <input name="name" required type="text" value="{{ old('name') ?? $edit->name}}" class="form-control" id="exampleInputname"  placeholder="">
+                    <input name="name" required type="text" value="{{ old('name') ?? $edit->name}}" class="form-control" id="exampleInputname" >
                 </div>
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputaddress">Address</label>
-                    <input name="address" required type="text" value="{{ old('address') ?? $edit->address}}" class="form-control" id="exampleInputaddress"  placeholder="">
+                    <input name="address" required type="text" value="{{ old('address') ?? $edit->address}}" class="form-control" id="exampleInputaddress" >
                 </div>
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputphone">Phone</label>
-                    <input name="phone" required type="number" value="{{ old('address') ?? $edit->phone}}" class="form-control" id="exampleInputphone"  placeholder="">
+                    <input name="phone" required type="number" value="{{ old('address') ?? $edit->phone}}" class="form-control" id="exampleInputphone"  >
                 </div>
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputcity">City</label>
-                    <input name="city" required type="text" value="{{ old('address') ?? $edit->city}}" class="form-control" id="exampleInputcity"  placeholder="">
+                    <input name="city" required type="text" value="{{ old('address') ?? $edit->city}}" class="form-control" id="exampleInputcity" >
                 </div>
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputcountry">Country</label>
-                    <input name="country" required type="text" value="{{ old('address') ?? $edit->country}}" class="form-control" id="exampleInputcountry"  placeholder="">
+                    <input name="country" required type="text" value="{{ old('address') ?? $edit->country}}" class="form-control" id="exampleInputcountry" >
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputimage">Image</label>
+                <div class="col-md-6 mb-4">
+                <label for="exampleInputimage">Image</label>
                     <input name="image" class="form-control" id="exampleInputimage"  placeholder="">
                 </div>
 
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success" style="margin-top: 2%;">Submit</button>
             </form>
         </div>
 </div>
