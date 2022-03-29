@@ -22,6 +22,8 @@ Route::get('/', function () {
 });
 //product
 Route::get('/product/view',[ProductController::class,'index'])->name('product.view');
+Route::get('/products/add',[ProductController::class,'create'])->name('product.create');
+Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
 
 
 //cateogory

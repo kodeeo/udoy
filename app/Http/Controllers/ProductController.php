@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-     return view('admin.pages.product.list');
+     $products=Product::all();
+     return view('admin.pages.product.list',compact('products'));
     }
 
     /**
@@ -21,10 +23,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     return view('admin.pages.product.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +36,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //    dd($request->all());
+         //Image
+        // dd(date('Ymdhms'));
+        $filename='';
+        if ($request->hasfile('image')) {
+            // dd('true');
+            $file=$request->file('image');
+            $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
+            $file->storeAs('/uploads',$filename);
+            // dd($filename);
+
+       Product::create([
+           'name'=>$request->name,
+           'image'=>$request->$filename,
+           'category_id'=>$request->category,
+           'price'=>$request->price,
+           'quntity'=>$request->quntity,
+           'details'=>$request->details,
+
+       ]);
+       return redirect()->back()->with('success','Product created successfully.');
     }
 
     /**
@@ -43,10 +65,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -54,10 +76,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    // public function edit($id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -66,10 +88,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -77,8 +99,8 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    // public function destroy($id)
+    // {
+    //     //
+    // }
 }
