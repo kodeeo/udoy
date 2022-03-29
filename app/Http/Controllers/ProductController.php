@@ -36,7 +36,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-         //    dd($request->all());
+        
+         //dd($request->all());
          //Image
         // dd(date('Ymdhms'));
         $filename='';
@@ -45,19 +46,23 @@ class ProductController extends Controller
             $file=$request->file('image');
             $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
             $file->storeAs('/uploads',$filename);
-            // dd($filename);
+           
 
-       Product::create([
-           'name'=>$request->name,
-           'image'=>$request->$filename,
-           'category_id'=>$request->category,
-           'price'=>$request->price,
-           'quntity'=>$request->quntity,
-           'details'=>$request->details,
+         Product::create([
+                    'name'=>$request->name,
+                    'image'=>$filename,
+                    'category_id'=>$request->category,
+                    'price'=>$request->price,
+                    'quantity'=>$request->quantity,
+                    'details'=>$request->details,
+                   ]);
 
-       ]);
-       return redirect()->back()->with('success','Product created successfully.');
+                //    return 'ok';
+        
+            return redirect()->back()->with('success','Product created successfully.');
     }
+}
+
 
     /**
      * Display the specified resource.
@@ -65,10 +70,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    // {
-    //     //
-    // }
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -76,10 +81,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function edit($id)
-    // {
-    //     //
-    // }
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -88,10 +93,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -99,8 +104,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+    public function destroy($id)
+    {
+        $products=Product::find($id)->delete();
+        return redirect()->back();
+    }
 }
