@@ -1,15 +1,12 @@
 @extends('admin.master')
 @section('content')
-<center><h1>Edit Category</h1> </center><br>
-
+<div class="card" style="text-align:center; margin-left:10%; margin-right:10%;">
+    <h1>Update Category Information</h1>
+    <hr>
 <form action="{{route('category.update',$edit_category->id)}}" method="POST">
     @method('PUT')
     @csrf
-    @if(session()->has ('success'))
-    <p class="alert alert-success">
-      {{session()->get ('success')}}
-    </p>
-    @endif
+
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -19,21 +16,21 @@
             @endforeach
         </ul>
     </div>
-@endif
+    @endif
 
-    <div class="form-group">
-        <label for="exampleInputEmail1">Name <span style="color:red">*</span> : </label>
-        <input name="category_name" required type="text" value="{{$edit_category->name}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Category Name">
+    <div class="col-md-6 mb-4">
+    <label for="exampleInputEmail1">Name <span style="color:red">*</span> : </label>
+        <input name="category_name" required type="text" value="{{$edit_category->name}}" class="form-control" id="exampleInputEmail1">
     </div>
-   
-    <div class="form-group">
+
+    <div class="col-md-6 mb-4">
         <div class="form-group">
             <label for="details">Details:</label>
-            <input  name="category_details" type="text" value="{{$edit_category->details}}" class="form-control" id="category_details" placeholder="Enter Category Details">
+            <input  name="category_details" type="text" value="{{$edit_category->details}}" class="form-control" id="category_details" >
         </div>
     </div>
 
-   
+
     <button type="submit" class="btn btn-success">Submit</button>
 </form>
 

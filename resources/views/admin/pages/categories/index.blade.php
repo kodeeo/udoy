@@ -2,22 +2,18 @@
 @section('content')
 
 
-<div class="heading">
-		<h2>Category List</h2>
-</div>
-<br>
-<div class="container" style="display: flex;">
-
-        <div class="card">
-            <table class="table">
-              <thead>
+<div class="card" style="display: flex;">
+    <div class="card" style="text-align:center;">
+        <h2>Categories</h2>
+        <table class="table table-bordered" style="background-color:#27a6a8; margin-right:95px;">
+            <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Details</th>
                     <th>Action</th>
-                  </tr>
-              </thead>
+                </tr>
+            </thead>
 
             @foreach ($categories as $key=>$category)
                 <tbody>
@@ -37,22 +33,22 @@
           </table>
         </div>
 
-        <div class="card">
-            <h1>Add Category</h1>
-            <hr> 
+        <div class="card" style="width: 50%; text-align:center; margin-left:3%;">
+            <h2>Add Categories</h2>
+            <hr>
             <form action="{{route('category.store')}}" method="POST">
                 @csrf
-                <div class="form-group">
-                    <label for="exampleInpuname">Name <span style="color:red">*</span> : </label>
+                <div class="col-md-6 mb-4">
+                    <label for="exampleInpuname">Name</label>
                     <input name="category_name" required type="text" class="form-control" id="exampleInputname"  placeholder="Enter Category Name">
                 </div>
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <div class="form-group">
-                        <label for="details">Details:</label>
+                        <label for="details">Details</label>
                         <input  name="category_details" type="text" class="form-control" id="category_details" placeholder="Enter Category Details">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success" style="margin-top: 2%;">Submit</button>
             </form>
         </div>
 </div>

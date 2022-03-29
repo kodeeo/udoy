@@ -178,7 +178,6 @@ html {
   }
   table {
     border-spacing: 0;
-    border-collapse: collapse;
   }
   td,
   th {
@@ -208,7 +207,7 @@ html {
     pre,
     blockquote {
       border: 1px solid #999;
-  
+
       page-break-inside: avoid;
     }
     thead {
@@ -269,7 +268,7 @@ html {
   }
   html {
     font-size: 62.5%;
-  
+
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
   body {
@@ -288,12 +287,12 @@ html {
     line-height: inherit;
   }
   a {
-    color: #428bca;
+    color: #333;
     text-decoration: none;
   }
   a:hover,
   a:focus {
-    color: #2a6496;
+    color: #fff;
     text-decoration: underline;
   }
   a:focus {
@@ -397,7 +396,6 @@ html {
   .h2,
   h3,
   .h3 {
-    margin-top:100px;
     margin-bottom: 10px;
   }
   h1 small,
@@ -1447,7 +1445,7 @@ html {
     padding: 5px;
   }
   .table-bordered {
-    border: 1px solid #ddd;
+    border: 1px solid rgb(0, 0, 0);
   }
   .table-bordered > thead > tr > th,
   .table-bordered > tbody > tr > th,
@@ -1455,11 +1453,11 @@ html {
   .table-bordered > thead > tr > td,
   .table-bordered > tbody > tr > td,
   .table-bordered > tfoot > tr > td {
-    border: 1px solid #ddd;
+    border: 1px solid rgb(0, 0, 0);
   }
   .table-bordered > thead > tr > th,
   .table-bordered > thead > tr > td {
-    border-bottom-width: 2px;
+    border-bottom-width: 1px;
   }
   .table-striped > tbody > tr:nth-child(odd) > td,
   .table-striped > tbody > tr:nth-child(odd) > th {
@@ -2367,7 +2365,7 @@ html {
   }
   @font-face {
     font-family: 'Glyphicons Halflings';
-  
+
     src: url('../fonts/glyphicons-halflings-regular.eot');
     src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
   }
@@ -2379,7 +2377,7 @@ html {
     font-style: normal;
     font-weight: normal;
     line-height: 1;
-  
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -4026,7 +4024,7 @@ html {
     color: #333;
   }
   .navbar-inverse {
-    background-color: rgb(7, 6, 80);
+    background-color: rgb(39, 166, 168);
     border-color: #080808;
   }
   .navbar-inverse .navbar-brand {
@@ -4052,7 +4050,6 @@ html {
   .navbar-inverse .navbar-nav > .active > a:hover,
   .navbar-inverse .navbar-nav > .active > a:focus {
     color: #fff;
-    background-color: rgba(1, 0, 36, 0.918);
   }
   .navbar-inverse .navbar-nav > .disabled > a,
   .navbar-inverse .navbar-nav > .disabled > a:hover,

@@ -89,7 +89,7 @@ class CategoryController extends Controller
             'name'=>$request->category_name,
             'details'=>$request->category_details,
         ]);
-        return redirect()->back()->with('success','Update Category Successfully');
+        return redirect()->route('category.index');
     }
 
     /**
