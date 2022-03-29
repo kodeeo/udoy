@@ -7,7 +7,7 @@
         <li><a href="{{route('customers.index')}}"><i class="fa fa-dashboard"></i>Customer</a></li>
         <li><a href="{{route('category.index')}}"><i class="fa-brands fa-buffer"></i> Category</a></li>
       </li>
-      <li><a href=""><i class="fa-solid fa-shirt"></i>Product</a></li>
+      <li><a href="{{route('product.view')}}"><i class="fa-solid fa-shirt"></i>Product</a></li>
 
       <li><a href=""><i class="fa fa-font"></i> Orders</a></li>
       <li><a href="bootstrap-elements.html"><i class="fa-solid fa-magnifying-glass"></i>Order Details</a></li>
