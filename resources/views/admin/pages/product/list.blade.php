@@ -2,62 +2,85 @@
 @section('content')
 
 
-<style>
-	body{
-	 
-	   background: linear-gradient(to left, #ccccff 45%, #ccffff 95%);
-   
-	}
-	 #customers {
-	   font-family: Arial, Helvetica, sans-serif;
-	   border-collapse: collapse;
-	   width: 100%;
-	 }
-	 /* .heading h2{
-	   text-align: center;
-	 } */
-	 #customers td, #customers th {
-	   border: 1px solid #ddd;
-	   padding: 8px;
-	 }
-	 
-	 #customers tr:nth-child(even){background-color: #ccccff;}
-	 
-	 #customers tr:hover {background-color: #ddd;}
-	 
-	
-	 #customers th {
-		padding-top: 12px;
-		padding-bottom: 12px;
-		text-align: left;
-		background-color: #001313;
-		color: white;
-	  }
-	 </style>
+@if(session()->has('success'))
+<p class="alert alert-success">
+    {{session()->get('success')}}
+</p>
+@endif
 
-     <div class="heading">
+<div class="heading">
+		<h2>Customers</h2>
+</div>
+<br>
+<div class="wrapper" style="display: flex;">
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
 
-	<h2>Cloth Type</h2>
-	  </div>
-	  
-	  <br>
-	  <a href="" class="btn btn-primary" type="button">Create New Cloth</a>
-	  <table id="customers">
-		<tr>
-		<th scope="row">SL No</th>
-		<th>Image</th>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Color</th>
-		<th>Size</th>
-		<th>Action</th>
-		</tr>  
-	<tr>
-	    <th scope="row"></th>
-		<td>th</td>
-		<td>th</td>	
-	</tr>
-	
-	</table>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                                <td>fred</td>
+                                <td>erc</td>
+                                <td>jhguwf</td>
+                                <td>jhguwf</td>
+                                <td>jhguwf</td>
+                                <td>
+                                    <a href=""><i class="fa-solid fa-eye"></i></a>
+                                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                        </tr>
+                    </tbody>
+         
+            </table>
+        </div>
+
+        <div>
+            <h1>Add Product</h1>
+            <hr>
+            <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
+				@csrf
+           
+                <div class="form-group">
+                    <label for="exampleInputname">Name</label>
+                    <input name="name" required type="text" class="form-control" id="exampleInputname"  placeholder="Enter Product Name">
+                </div>
+				<div class="form-group">
+					<div class="form-group">
+						<label for="image">Image:</label>
+						<input required type="file" name="cloth_image" class="form-control" id="image">
+					</div>
+				</div>
+                <div class="form-group">
+                    <label for="exampleInputpasssword">Category</label>
+                    <input name="category" required type="category" class="form-control" id="exampleInputcategory"  placeholder="Enter Product Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputaddress">Price</label>
+                    <input name="price" required type="number" class="form-control" id="exampleInputnumber"  placeholder="Enter Product Pirce">
+                </div>
+				<div class="form-group">
+                    <label for="exampleInputaddress">Quantity</label>
+                    <input name="quantity" required type="number" class="form-control" id="exampleInputnumber"  placeholder="Enter Product Quantity">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputcity">Details</label>
+                    <input name="detail" required type="text" class="form-control" id="exampleInputdetails"  placeholder="Enter Product Seller Details">
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+</div>
 
 @endsection
