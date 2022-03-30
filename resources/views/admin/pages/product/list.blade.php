@@ -32,7 +32,7 @@
                     <td> 
                         <img src="{{asset('/storage/uploads/'.$product->image)}}" width="100px" alt="Image">
                     </td>
-                    <td>{{$product->category_id}}</td>
+                    <td>{{$product->category->name}}</td>
                     <td>{{$product->price}}</td>
                     <td>{{$product->quantity}}</td>
                     <td>{{$product->details}}</td>
@@ -66,7 +66,11 @@
 				</div>
                 <div class="form-group">
                     <label for="exampleInputpasssword">Category</label>
-                    <input name="category" required type="category" class="form-control" id="exampleInputcategory"  placeholder="Enter Product Name">
+                    <select id="category" name="category">
+                              @foreach ($p_category as $category)
+                              <option value="{{$category->id}}">{{$category->name}}</option>   
+                              @endforeach
+                               </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputaddress">Price</label>
