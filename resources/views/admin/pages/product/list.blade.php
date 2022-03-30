@@ -30,7 +30,7 @@
                   <th scope="row">{{$key+1}}</th>
                     <td>{{$product->name}}</td>
                     <td> 
-                        <img src="{{asset('/storage/uploads/'.$product->image)}}" width="100px" alt="Image">
+                        <img src="{{url('/uploads/product/'.$product->image)}}" width="100px" alt="Image">
                     </td>
                     <td>{{$product->category->name}}</td>
                     <td>{{$product->price}}</td>
@@ -61,7 +61,7 @@
 				<div class="form-group">
 					<div class="form-group">
 						<label for="image">Image:</label>
-						<input required type="file" name="image" class="form-control" id="image">
+						<input type="file" name="product_image" class="form-control" id="image">
 					</div>
 				</div>
                 <div class="form-group">
