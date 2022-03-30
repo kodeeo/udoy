@@ -40,17 +40,18 @@ class ProductController extends Controller
          //dd($request->all());
          //Image
         // dd(date('Ymdhms'));
-        $filename='';
-        if ($request->hasfile('image')) {
-            // dd('true');
-            $file=$request->file('image');
-            $filename=date('Ymdhms').'.'.$file->getClientOriginalExtension();
-            $file->storeAs('/uploads',$filename);
-           
+        $image_name=null;
+    if($request->hasfile('product_image'))
+    {
+        $image_name=date('Ymdhis').'.'.$request->file('product_image')->getClientOriginalExtension();
+        // dd($image_name);
+        $request->file('product_image')->storeAs('/uploads/product',$image_name);
 
-         Product::create([
+    }
+
+    Product::create([
                     'name'=>$request->name,
-                    'image'=>$filename,
+                    'image'=>$image_name,
                     'category_id'=>$request->category,
                     'price'=>$request->price,
                     'quantity'=>$request->quantity,
@@ -60,8 +61,9 @@ class ProductController extends Controller
                 //    return 'ok';
         
             return redirect()->back()->with('success','Product created successfully.');
+
     }
-}
+
 
 
     /**
@@ -110,3 +112,17 @@ class ProductController extends Controller
         return redirect()->back();
     }
 }
+
+
+  //  Product::create([
+        //             'name'=>$request->name,
+        //             'image'=>$image_name,
+        //             'category_id'=>$request->category,
+        //             'price'=>$request->price,
+        //             'quantity'=>$request->quantity,
+        //             'details'=>$request->details,
+        //            ]);
+
+        //         //    return 'ok';
+        
+        //     return redirect()->back()->with('success','Product created successfully.');
