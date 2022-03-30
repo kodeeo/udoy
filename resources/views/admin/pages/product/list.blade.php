@@ -8,46 +8,48 @@
 </p>
 @endif
 
-<div class="heading">
-		<h2>Customers</h2>
-</div>
-<br>
-<div class="wrapper" style="display: flex;">
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Details</th>
-                    </tr>
-                </thead>
 
-                    <tbody>
-                        <tr>
-                            <th>1</th>
-                                <td>fred</td>
-                                <td>erc</td>
-                                <td>jhguwf</td>
-                                <td>jhguwf</td>
-                                <td>jhguwf</td>
-                                <td>
-                                    <a href=""><i class="fa-solid fa-eye"></i></a>
-                                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href=""><i class="fa-solid fa-trash"></i></a>
-                                </td>
-                        </tr>
-                    </tbody>
-         
-            </table>
+<div class="card" style="display: flex;">
+    <div class="card" style="text-align:center;">
+        <h2>Product</h2>
+        <table class="table table-bordered" style="background-color:#27a6a8; margin-right:95px;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Details</th>
+                    <th>Action</th>
+                </tr>
+                @foreach($products as $key=>$product)  
+ 
+                <tr>
+                  <th scope="row">{{$key+1}}</th>
+                    <td>{{$product->name}}</td>
+                    <td> 
+                        <img src="{{asset('/storage/uploads/'.$product->image)}}" width="100px" alt="Image">
+                    </td>
+                    <td>{{$product->category_id}}</td>
+                    <td>{{$product->price}}</td>
+                    <td>{{$product->quantity}}</td>
+                    <td>{{$product->details}}</td>
+                    <td>
+                
+                    <a href="{{route('product.delete',$product->id)}}"><i class="fa-solid fa-trash"></i></a>
+                    </td> 
+                    
+                </tr>
+                  @endforeach
+            
+          </table>
+        
         </div>
 
-        <div>
-            <h1>Add Product</h1>
+        <div class="card" width: 50%; text-align:center; margin-left:3%;">
+            <h2>Add Product</h2>
             <hr>
             <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
 				@csrf
@@ -59,7 +61,7 @@
 				<div class="form-group">
 					<div class="form-group">
 						<label for="image">Image:</label>
-						<input required type="file" name="cloth_image" class="form-control" id="image">
+						<input required type="file" name="image" class="form-control" id="image">
 					</div>
 				</div>
                 <div class="form-group">
@@ -76,7 +78,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputcity">Details</label>
-                    <input name="detail" required type="text" class="form-control" id="exampleInputdetails"  placeholder="Enter Product Seller Details">
+                    <input name="details" required type="text" class="form-control" id="exampleInputdetails"  placeholder="Enter Product Seller Details">
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
