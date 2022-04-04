@@ -16,26 +16,22 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
                     <th>Image</th>
+                    <th>Name</th>
                     <th>Category</th>
-                    <th>Price</th>
                     <th>Quantity</th>
-                    <th>Details</th>
                     <th>Action</th>
                 </tr>
                 @foreach($products as $key=>$product)  
  
                 <tr>
                   <th scope="row">{{$key+1}}</th>
-                    <td>{{$product->name}}</td>
                     <td> 
                         <img src="{{url('/uploads/product/'.$product->image)}}" width="100px" alt="Image">
                     </td>
+                    <td>{{$product->name}}</td>
                     <td>{{$product->category->name}}</td>
-                    <td>{{$product->price}}</td>
                     <td>{{$product->quantity}}</td>
-                    <td>{{$product->details}}</td>
                     <td>
                 
                     <a href="{{route('product.delete',$product->id)}}"><i class="fa-solid fa-trash"></i></a>
@@ -48,8 +44,8 @@
         
         </div>
 
-        <div class="card" width: 50%; text-align:center; margin-left:3%;">
-            <h2>Add Product</h2>
+        <div class="card" style="width: 50%; text-align:center; margin-left:3%;">
+            <h2>Add Products</h2>
             <hr>
             <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
 				@csrf
