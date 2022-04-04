@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,7 +17,8 @@ class ProductController extends Controller
     {
      $products=Product::all();
      $p_category=Category::all();
-     return view('admin.pages.product.list',compact('products','p_category'));
+     $p_brand=Brand::all();
+     return view('admin.pages.product.list',compact('products','p_category','p_brand'));
     }
 
     /**
@@ -54,6 +56,7 @@ class ProductController extends Controller
                     'name'=>$request->name,
                     'image'=>$image_name,
                     'category_id'=>$request->category,
+                    'brand_id'=>$request->brand,
                     'price'=>$request->price,
                     'quantity'=>$request->quantity,
                     'details'=>$request->details,
