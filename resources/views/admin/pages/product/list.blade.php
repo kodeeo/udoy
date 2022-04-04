@@ -71,6 +71,14 @@
                               <option value="{{$category->id}}">{{$category->name}}</option>   
                               @endforeach
                                </select>
+
+                               <div class="form-group">
+                    <label for="exampleInputpasssword">Brand</label>
+                    <select id="brand" name="brand">
+                              @foreach ($p_brand as $brand)
+                              <option value="{{$brand->id}}">{{$brand->name}}</option>   
+                              @endforeach
+                               </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputaddress">Price</label>

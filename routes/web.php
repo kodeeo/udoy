@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
-
+use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +26,15 @@ Route::get('/products/add',[ProductController::class,'create'])->name('product.c
 Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
 Route::get('/delete/product/{id}',[ProductController::class,'destroy'])->name('product.delete');
 
+
+
+//brand
+Route::get('/brand/index',[BrandController::class,'index'])->name('brand.index');
+Route::post('/brand/store',[BrandController::class,'store'])->name('brand.store');
+Route::get('/brand/view',[BrandController::class,'show'])->name('brand.view');
+Route::get('/brand/edit',[BrandController::class,'edit'])->name('brand.edit');
+Route::put('/brand/update',[BrandController::class,'update'])->name('brand.update');
+Route::get('/delete/brand/{id}',[BrandController::class,'destroy'])->name('brand.delete');
 
 //cateogory
 Route::get('/add/category/',[CategoryController::class,'create'])->name('category.add');
