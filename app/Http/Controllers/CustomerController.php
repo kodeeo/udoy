@@ -36,6 +36,20 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+          //dd($request->all());
+         //Image
+        // dd(date('Ymdhms'));
+        $image_name=null;
+        if($request->hasfile('image'))
+          {
+        $image_name=date('Ymdhis').'.'.$request->file('image')->getClientOriginalExtension();
+        // dd($image_name);
+        $request->file('image')->storeAs('/uploads/product',$image_name);
+         }
+
+
+
+
         Customer::create([
             'name'=>$request->name,
             'email'=>$request->email,
@@ -44,7 +58,7 @@ class CustomerController extends Controller
             'phone'=>$request->phone,
             'city'=>$request->city,
             'country'=>$request->country,
-            'image'=>$request->image,
+            'image'=>$request->$image_name,
            ]);
 
            return redirect()->back();

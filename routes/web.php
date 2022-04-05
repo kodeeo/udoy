@@ -21,11 +21,11 @@ Route::get('/', function () {
     return view('admin.master');
 });
 //product
-Route::get('/product/view',[ProductController::class,'index'])->name('product.view');
+Route::get('/product/index',[ProductController::class,'index'])->name('product.index');
 Route::get('/products/add',[ProductController::class,'create'])->name('product.create');
 Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
 Route::get('/delete/product/{id}',[ProductController::class,'destroy'])->name('product.delete');
-
+Route::get('/product/show/{id}',[ProductController::class,'show'])->name('product.show');
 
 
 //brand

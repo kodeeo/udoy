@@ -9,6 +9,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Image</th>
                         <th>City</th>
                         <th>Country</th>
                         <th>Action</th>
@@ -19,6 +20,9 @@
                     <tbody>
                         <tr>
                             <th>{{$key+1}}</th>
+                            <td> 
+                                <img src="{{url('/uploads/product/'.$customer->image)}}" width="100px" alt="Image">
+                            </td>
                                 <td>{{$customer->name}}</td>
                                 <td>{{$customer->city}}</td>
                                 <td>{{$customer->country}}</td>
@@ -66,10 +70,12 @@
                     <label for="exampleInputcountry">Country</label>
                     <input name="country" required type="text" class="form-control" id="exampleInputcountry"  placeholder="Enter Customer's Country">
                 </div>
-                <div class="col-md-6 mb-4">
-                    <label for="exampleInputimage">Image</label>
-                    <input name="image" class="form-control" id="exampleInputimage"  placeholder="Select Image">
-                </div>
+                <div class="form-group">
+					<div class="form-group">
+						<label for="image">Image:</label>
+						<input type="file" name="image" class="form-control" id="image">
+					</div>
+				</div>
 
                 <button type="submit" class="btn btn-success" style="margin-top: 2%;">Submit</button>
             </form>

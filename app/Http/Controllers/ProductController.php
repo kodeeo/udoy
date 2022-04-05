@@ -18,7 +18,7 @@ class ProductController extends Controller
      $products=Product::all();
      $p_category=Category::all();
      $p_brand=Brand::all();
-     return view('admin.pages.product.list',compact('products','p_category','p_brand'));
+     return view('admin.pages.products.list',compact('products','p_category','p_brand'));
     }
 
     /**
@@ -78,7 +78,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $show=Product::find($id);
+        return view('admin.pages.products.show',compact('show'));  
     }
 
     /**
