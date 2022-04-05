@@ -78,7 +78,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+    
+       
     }
 
     /**
@@ -89,7 +90,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product=Product::find($id);
+        
+        $categories=Category::all();
+        return view ('admin.pages.product.edit',compact('categories','product'));
     }
 
     /**
@@ -101,7 +105,33 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $product=Product::find($id);
+        // dd($request->all());
+        
+        $image_name=$product->image;
+        //              step 1: check image exist in this request.
+                if($request->hasFile('image'))
+                {
+                    // step 2: generate file name
+                    $image_name=date('Ymdhis') .'.'. $request->file('image')->getClientOriginalExtension();
+        
+                    //step 3 : store into project directory
+        
+                    $request->file('image')->storeAs('/uploads/product',$image_name);
+                }
+                $product=Product::find($id);
+                $product->update([
+                    'name'=>$request->name,
+                    'image'=>$image_name,
+                    'category_id'=>$request->category,
+                    'price'=>$request->price,
+                    'quantity'=>$request->quantity,
+                    'details'=>$request->details,
+                ]);
+                return redirect ()->route('product.view')->with('message','Product Updated');
+               
+                
     }
 
     /**
