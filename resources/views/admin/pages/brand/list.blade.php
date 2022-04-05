@@ -41,24 +41,24 @@
         
         </div>
 
-        <div class="card" width: 50%; text-align:center; margin-left:3%;">
+        <div class="card" style="width: 50%; text-align:center; margin-left:3%;">
             <h2>Add Brand</h2>
             <hr>
             <form action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
 				@csrf
            
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputname">Name</label>
                     <input name="brand_name" required type="text" class="form-control" id="exampleInputname"  placeholder="Enter Brand Name">
                 </div>
-				<div class="form-group">
+                <div class="col-md-6 mb-4">
 					<div class="form-group">
 						<label for="image">Image:</label>
 						<input type="file" name="brand_image" class="form-control" id="image">
 					</div>
 				</div>
                 
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputcity">Details</label>
                     <input name="brand_details" required type="text" class="form-control" id="exampleInputdetails"  placeholder="Enter Brand Details">
                 </div>

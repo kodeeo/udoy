@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,4 +58,5 @@ Route::put('/update/customers/{id}',[CustomerController::class,'update'])->name(
 Route::get('/delete/customers/{id}',[CustomerController::class,'destroy'])->name('customers.delete');
 
 //orders
-Route::get('/order/view',[OrderController::class,'index'])->name('order.view');
+Route::get('orders/list', [OrderController::class, 'index'])->name('order.index');
+

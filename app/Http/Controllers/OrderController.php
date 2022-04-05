@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\OrderController;
 
@@ -10,7 +12,12 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders=Product::all();
-        return view('admin.pages.orders.view');
+
+        $products=Product::all();
+        $categories=Category::all();
+        $brands=Brand::all();
+        return view('admin.pages.orders.index',compact('products','categories','brands'));
+
+        
     }
 }
