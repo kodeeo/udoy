@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
@@ -25,6 +26,8 @@ Route::get('/product/view',[ProductController::class,'index'])->name('product.vi
 Route::get('/products/add',[ProductController::class,'create'])->name('product.create');
 Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
 Route::get('/delete/product/{id}',[ProductController::class,'destroy'])->name('product.delete');
+Route::get('/edit/product/{id}',[ProductController::class,'edit'])->name('product.edit');
+Route::put('/update/product/{id}',[ProductController::class,'update'])->name('product.update');
 
 
 //cateogory
@@ -45,3 +48,5 @@ Route::get('/edit/customers/{id}',[CustomerController::class,'edit'])->name('cus
 Route::put('/update/customers/{id}',[CustomerController::class,'update'])->name('customers.update');
 Route::get('/delete/customers/{id}',[CustomerController::class,'destroy'])->name('customers.delete');
 
+//orders
+Route::get('/order/view',[OrderController::class,'index'])->name('order.view');

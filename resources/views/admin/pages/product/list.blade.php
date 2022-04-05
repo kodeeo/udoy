@@ -37,8 +37,10 @@
                     <td>{{$product->quantity}}</td>
                     <td>{{$product->details}}</td>
                     <td>
-                
-                    <a href="{{route('product.delete',$product->id)}}"><i class="fa-solid fa-trash"></i></a>
+                    <a href="{{route('product.show',$product->id)}}"> <i class="fa-solid fa-eye"></i></a>
+                   <a href="{{route('product.delete',$product->id)}}"><i class="fa-solid fa-trash"></i></a>
+                   <a href="{{route('product.edit',$product->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+
                     </td> 
                     
                 </tr>

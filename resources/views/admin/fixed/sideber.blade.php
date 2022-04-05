@@ -9,7 +9,8 @@
       </li>
       <li><a href="{{route('product.view')}}"><i class="fa-solid fa-shirt"></i>Product</a></li>
 
-      <li><a href=""><i class="fa fa-font"></i> Orders</a></li>
+      <li><a href="{{route('order.view')}}"><i class="fa fa-font"></i> Orders</a></li>
+      
       <li><a href="bootstrap-elements.html"><i class="fa-solid fa-magnifying-glass"></i>Order Details</a></li>
       <li><a href="bootstrap-grid.html"><i class="fa-solid fa-arrow-trend-up"></i> Stocks Information</a></li>
       <li><a href="blank-page.html"><i class="fa fa-file"></i> Sales</a></li>
