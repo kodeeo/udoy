@@ -50,11 +50,11 @@
             <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
 				@csrf
            
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputname">Name</label>
                     <input name="name" required type="text" class="form-control" id="exampleInputname"  placeholder="Enter Product Name">
                 </div>
-				<div class="form-group">
+                <div class="col-md-6 mb-4">
 					<div class="form-group">
 						<label for="image">Image:</label>
 						<input type="file" name="product_image" class="form-control" id="image">
@@ -66,25 +66,26 @@
                               @foreach ($p_category as $category)
                               <option value="{{$category->id}}">{{$category->name}}</option>   
                               @endforeach
-                               </select>
+                    </select>
+                </div>
 
-                               <div class="form-group">
+                <div class="form-group">
                     <label for="exampleInputpasssword">Brand</label>
                     <select id="brand" name="brand">
                               @foreach ($p_brand as $brand)
-                              <option value="{{$brand->id}}">{{$brand->name}}</option>   
+                                    <option value="{{$brand->id}}">{{$brand->name}}</option>   
                               @endforeach
-                               </select>
+                    </select>
                 </div>
-                <div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputaddress">Price</label>
                     <input name="price" required type="number" class="form-control" id="exampleInputnumber"  placeholder="Enter Product Pirce">
                 </div>
-				<div class="form-group">
+                <div class="col-md-6 mb-4">
                     <label for="exampleInputaddress">Quantity</label>
                     <input name="quantity" required type="number" class="form-control" id="exampleInputnumber"  placeholder="Enter Product Quantity">
                 </div>
-                <div class="form-group">
+                <div class="col-md-12 mb-4">
                     <label for="exampleInputcity">Details</label>
                     <input name="details" required type="text" class="form-control" id="exampleInputdetails"  placeholder="Enter Product Seller Details">
                 </div>

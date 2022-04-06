@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +55,5 @@ Route::get('/edit/customers/{id}',[CustomerController::class,'edit'])->name('cus
 Route::put('/update/customers/{id}',[CustomerController::class,'update'])->name('customers.update');
 Route::get('/delete/customers/{id}',[CustomerController::class,'destroy'])->name('customers.delete');
 
+//orders
+Route::get('orders/list', [OrderController::class, 'index'])->name('order.index');
