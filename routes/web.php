@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -18,9 +19,19 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
+Route::get('/admin/login',[UserController::class,'login'])->name('admin.login');
+Route::post('/admin/do/login',[UserController::class,'doLogin'])->name('admin.do.login');
+Route::get('/admin/registration',[UserController::class,'registration'])->name('admin.registration');
+Route::post('/admin/do/registration',[UserController::class,'registrationstore'])->name('admin.registration.store');
+Route::get('/admin/logout',[UserController::class,'logout'])->name('admin.logout');
+
+Route::group(['prefix'=>'/','middleware'=>'auth'], function (){
+
+
 Route::get('/', function () {
     return view('admin.master');
-});
+    
+})->name('admin.home');;
 //product
 Route::get('/product/view',[ProductController::class,'index'])->name('product.view');
 Route::get('/products/add',[ProductController::class,'create'])->name('product.create');
@@ -59,4 +70,5 @@ Route::get('/delete/customers/{id}',[CustomerController::class,'destroy'])->name
 
 //orders
 Route::get('orders/list', [OrderController::class, 'index'])->name('order.index');
+});
 
