@@ -11,7 +11,7 @@
                     <td><img src="{{url('/uploads/brand/'.$show->image)}}" style="border-radius:4px" width="500px" alt="brand image"></td>
 
                     <p><b><h4>Name:</b> {{$show->name}}</h4></p> <hr>
-                    <p><b><h4>Email:</b> {{$show->details}}</h4></p> <hr>
+                    <p><b><h4>Details:</b> {{$show->details}}</h4></p> <hr>
                 </div>
 
 </div>
