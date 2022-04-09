@@ -8,6 +8,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>City</th>
                         <th>Country</th>
@@ -19,13 +20,22 @@
                     <tbody>
                         <tr>
                             <th>{{$key+1}}</th>
+                                
+                                <td><img src="{{url('/uploads/customers/'.$customer->image)}}" style="border-radius:4px" width="100px" alt="customer image"></td>
+                                
                                 <td>{{$customer->name}}</td>
                                 <td>{{$customer->city}}</td>
                                 <td>{{$customer->country}}</td>
                                 <td>
                                     <a href="{{route('customers.show',$customer->id)}}"><i class="fa fa-eye"></i></a>
                                     <a href="{{route('customers.edit',$customer->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="{{route('customers.delete',$customer->id)}}"><i class="fa-solid fa-trash"></i></a>
+                                    <form action="{{ route('customers.destroy', $customer->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                            <div>
+                                                <button ><i type="submit" class="fa fa-trash"></i></button>
+                                            </div>
+                                    </form>
                                 </td>
                         </tr>
                     </tbody>
@@ -36,7 +46,7 @@
         <div class="card" style="width: 50%; text-align:center; margin-left:3%;">
             <h2>Add Customers</h2>
             <hr>
-            <form action="{{route('customers.store')}}" method="POST">
+            <form action="{{route('customers.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-6 mb-4">
                     <label for="exampleInputname">Name</label>
@@ -68,7 +78,7 @@
                 </div>
                 <div class="col-md-6 mb-4">
                     <label for="exampleInputimage">Image</label>
-                    <input name="image" class="form-control" id="exampleInputimage"  placeholder="Select Image">
+                    <input name="cust_image" type="file" class="form-control" id="exampleInputimage"  placeholder="Select Image">
                 </div>
 
                 <button type="submit" class="btn btn-success" style="margin-top: 2%;">Submit</button>

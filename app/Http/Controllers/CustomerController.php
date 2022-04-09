@@ -36,6 +36,15 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        $image_name=null;
+        if($request->hasfile('cust_image'))
+        {
+            $image_name=date('Ymdhis').'.'.$request->file('cust_image')->getClientOriginalExtension();
+            // dd($image_name);
+            $request->file('cust_image')->storeAs('/uploads/customers',$image_name);
+    
+        }
+
         Customer::create([
             'name'=>$request->name,
             'email'=>$request->email,
@@ -44,7 +53,7 @@ class CustomerController extends Controller
             'phone'=>$request->phone,
             'city'=>$request->city,
             'country'=>$request->country,
-            'image'=>$request->image,
+            'image'=>$image_name,
            ]);
 
            return redirect()->back();
@@ -84,13 +93,24 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $edit=Customer::find($id);
+        
+        $image_name=$edit->image;
+        //              step 1: check image exist in this request.
+        if($request->hasfile('cust_image'))
+        {
+            $image_name=date('Ymdhis').'.'.$request->file('cust_image')->getClientOriginalExtension();
+            // dd($image_name);
+            $request->file('cust_image')->storeAs('/uploads/customers',$image_name);
+    
+        }
+
         $edit->update([
             'name'=>$request->name,
             'address'=>$request->address,
             'phone'=>$request->phone,
             'city'=>$request->city,
             'country'=>$request->country,
-            'image'=>$request->image,
+            'image'=>$image_name,
         ]);
         return redirect()->route('customers.index');
     }

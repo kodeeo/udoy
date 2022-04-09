@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
+
 
 class CategoryController extends Controller
 {
@@ -35,9 +38,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-
             'category_name'=>'required',
             'category_details'=>'required',
         ]);
@@ -45,11 +46,8 @@ class CategoryController extends Controller
         Category::create([
             'name'=>$request->category_name,
             'details'=>$request->category_details,
-
            ]);
-
            return redirect()->back()->with('success','Add Category Successfully');
-
     }
 
     /**
@@ -100,7 +98,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $categories=Category::find($id)->delete();
-     return redirect()->back()->with('success','Category Deleted');
+        $category=Category::find($id)->delete();
+        Toastr::success('Deleted');
+        return redirect()->back();
     }
 }

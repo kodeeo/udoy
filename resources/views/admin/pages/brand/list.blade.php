@@ -29,9 +29,15 @@
                     <td> <img src="{{url('/uploads/brand/'.$brand->image)}}" width="100px" alt="Image"></td>
                     <td>{{$brand->details}}</td>
                     <td>
-                    <a href="{{route('brand.view',$brand->id)}}"><i class="fa-solid fa-eye"></i></a>
-                    <a href="{{route('brand.edit',$brand->id)}}"><i class="fa-solid fa-pen"></i></a>
-                    <a href="{{route('brand.delete',$brand->id)}}"><i class="fa-solid fa-trash"></i></a>
+                    <a href="{{route('brands.show',$brand->id)}}"><i class="fa-solid fa-eye"></i></a>
+                    <a href="{{route('brands.edit',$brand->id)}}"><i class="fa-solid fa-pen"></i></a>
+                    <form action="{{ route('brands.destroy', $brand->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                            <div>
+                                <button ><i type="submit" class="fa fa-trash"></i></button>
+                            </div>
+                    </form>
                     </td> 
                     
                 </tr>
