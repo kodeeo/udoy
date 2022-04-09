@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -17,6 +18,15 @@ use App\Http\Controllers\CustomerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/admin/login',[UserController::class,'login'])->name('admin.login');
+Route::post('/admin/do/login',[UserController::class,'doLogin'])->name('admin.do.login');
+Route::get('/admin/registration',[UserController::class,'registration'])->name('admin.registration');
+Route::post('/admin/do/registration',[UserController::class,'registrationstore'])->name('admin.registration.store');
+Route::get('/admin/logout',[UserController::class,'logout'])->name('admin.logout');
+
+Route::group(['prefix'=>'/','middleware'=>'auth'], function (){
+
 
 Route::get('/', function () {
     return view('admin.master');
@@ -55,4 +65,5 @@ Route::resource('customers', CustomerController::class);
 
 //orders
 Route::get('orders/list', [OrderController::class, 'index'])->name('order.index');
+});
 
