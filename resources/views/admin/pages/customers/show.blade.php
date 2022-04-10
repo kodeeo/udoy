@@ -7,6 +7,9 @@
                 <img style="border-radius: 8px; margin: 10px;" width="250px;" height="250px;" src=" {{url('/uploads/employee/'.$profile->employee_image)}}" alt="product">
     </div> --}}
                 <div class="container" style="width: 60%; margin-top:30px;">
+
+                    <td><img src="{{url('/uploads/customers/'.$show->image)}}" style="border-radius:4px" width="500px" alt="customer image"></td>
+
                     <p><b><h4>Name:</b> {{$show->name}}</h4></p> <hr>
                     <p><b><h4>Email:</b> {{$show->email}}</h4></p> <hr>
                     <p><b><h4>Phone:</b> {{$show->phone}}</h4></p> <hr>
