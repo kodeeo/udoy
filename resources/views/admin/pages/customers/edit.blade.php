@@ -5,6 +5,10 @@
 <div class="card" style="text-align:center; margin-left:10%; margin-right:10%;">
             <h1>Update Customer Information</h1>
             <hr>
+
+            <img src="{{url('/uploads/customers/'.$edit->image)}}" width="300px" alt="Customer Image"></td>
+
+
             <form action="{{route('customers.update',$edit->id)}}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
