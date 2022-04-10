@@ -140,11 +140,11 @@ body {
       @csrf
        
         <div class="form__group">
-            <input type="email" name="email" placeholder="Enter Email" class="form__input" />
+            <input type="email" name="email" value="admin@gmail.com" placeholder="Enter Email" class="form__input" />
         </div>
         
         <div class="form__group">
-            <input type="password" name="password" placeholder="Enter Password" class="form__input" />
+            <input type="password" name="password" value="123" placeholder="Enter Password" class="form__input" />
         </div>
         
         <button class="btn" type="submit">Login</button>

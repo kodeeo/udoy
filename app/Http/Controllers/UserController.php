@@ -36,7 +36,7 @@ class UserController extends Controller
 
         if(Auth::attempt($admin))
         {
-            return redirect()->route('admin.home')->with('success','Login Successful');
+            return redirect()->route('admin.master')->with('success','Login Successful');
         }
         else
         return redirect()->back()->withErrors('Invalid user credentials');

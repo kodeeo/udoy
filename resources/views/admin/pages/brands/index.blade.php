@@ -50,7 +50,7 @@
         <div class="card" style="width: 50%; text-align:center; margin-left:3%;">
             <h2>Add Brand</h2>
             <hr>
-            <form action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('brands.store')}}" method="POST" enctype="multipart/form-data">
 				@csrf
            
                 <div class="col-md-6 mb-4">
@@ -59,8 +59,8 @@
                 </div>
                 <div class="col-md-6 mb-4">
 					<div class="form-group">
-						<label for="image">Image:</label>
-						<input type="file" name="brand_image" class="form-control" id="image">
+						<label for="brand_image">Image:</label>
+						<input type="file" name="brand_image" class="form-control" id="brand_image">
 					</div>
 				</div>
                 

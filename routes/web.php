@@ -28,9 +28,7 @@ Route::get('/admin/logout',[UserController::class,'logout'])->name('admin.logout
 Route::group(['prefix'=>'/','middleware'=>'auth'], function (){
 
 
-Route::get('/', function () {
-    return view('admin.master');
-});
+Route::view('/','admin.master')->name('admin.master');
 
 
 //product
@@ -45,17 +43,7 @@ Route::put('/update/product/{id}',[ProductController::class,'update'])->name('pr
 
 
 //brand
-
 Route::resource('brands', BrandController::class);
-
-Route::get('/brand/index',[BrandController::class,'index'])->name('brand.index');
-Route::post('/brand/store',[BrandController::class,'store'])->name('brand.store');
-Route::get('/brand/view',[BrandController::class,'show'])->name('brand.view');
-Route::get('/brand/edit',[BrandController::class,'edit'])->name('brand.edit');
-Route::put('/brand/update',[BrandController::class,'update'])->name('brand.update');
-Route::get('/delete/brand/{id}',[BrandController::class,'destroy'])->name('brand.delete');
-
-
 
 //cateogory
 Route::resource('category', CategoryController::class);
@@ -65,5 +53,6 @@ Route::resource('customers', CustomerController::class);
 
 //orders
 Route::get('orders/list', [OrderController::class, 'index'])->name('order.index');
+
 });
 
