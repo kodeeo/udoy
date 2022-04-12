@@ -19,7 +19,7 @@ class ProductController extends Controller
      $p_category=Category::all();
      $p_brand=Brand::all();
 
-     return view('admin.pages.product.index',compact('products','p_category','p_brand'));
+     return view('admin.pages.products.index',compact('products','p_category','p_brand'));
 
     }
 
@@ -93,10 +93,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product=Product::find($id);
-        
+        $products=Product::find($id);
+        //dd($products);
+        $brands=Brand::all();
         $categories=Category::all();
-        return view ('admin.pages.product.edit',compact('categories','product'));
+
+        return view ('admin.pages.products.edit',compact('categories','products','brands'));
     }
 
     /**
@@ -133,7 +135,7 @@ class ProductController extends Controller
                     'quantity'=>$request->quantity,
                     'details'=>$request->details,
                 ]);
-                return redirect ()->route('product.index')->with('message','Product Updated');
+                return redirect ()->route('products.index')->with('message','Product Updated');
                
                 
     }
@@ -150,17 +152,3 @@ class ProductController extends Controller
         return redirect()->back();
     }
 }
-
-
-  //  Product::create([
-        //             'name'=>$request->name,
-        //             'image'=>$image_name,
-        //             'category_id'=>$request->category,
-        //             'price'=>$request->price,
-        //             'quantity'=>$request->quantity,
-        //             'details'=>$request->details,
-        //            ]);
-
-        //         //    return 'ok';
-        
-        //     return redirect()->back()->with('success','Product created successfully.');

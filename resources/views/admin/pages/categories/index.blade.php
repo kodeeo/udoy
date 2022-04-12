@@ -3,8 +3,10 @@
 
 
 <div class="card" style="display: flex;">
-    <div class="card" style="text-align:center;">
+
+        <div class="card" style="text-align:center; width:55%">
         <h2>Categories</h2>
+        <hr>
         <table class="table table-bordered" style="background-color:#27a6a8; margin-right:95px;">
             <thead>
                 <tr>
@@ -23,7 +25,7 @@
                           <td>{{$category->details}}</td>
                           <td>
                                 <a href="{{route('category.edit',$category->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
-
+                                
                                 <form action="{{ route('category.destroy', $category->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -31,7 +33,6 @@
                                             <button ><i type="submit" class="fa-solid fa-trash"></i></button>
                                         </div>
                                 </form>
-                                {{-- <a href="{{route('category.destroy',$category->id)}}"><i class="fa-solid fa-trash"></i></a> --}}
                           </td>
 
                         </tr>
@@ -42,7 +43,7 @@
           </table>
         </div>
 
-        <div class="card" style="width: 50%; text-align:center; margin-left:3%;">
+        <div class="card" style="width: 45%; text-align:center; margin-left:3%;">
             <h2>Add Categories</h2>
             <hr>
             <form action="{{route('category.store')}}" method="POST">
