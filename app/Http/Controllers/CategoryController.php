@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Brian2694\Toastr\Facades\Toastr;
 
 
@@ -16,6 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        //throw new \Exception("Laravel Log");
+        Log::Channel('custom1')->warning("Hello on custom1 log file");
+
         $categories=Category::all();
         return view('admin.pages.categories.index',compact('categories'));
     }
@@ -27,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.categories.create');
+        //
     }
 
     /**
@@ -47,7 +51,12 @@ class CategoryController extends Controller
             'name'=>$request->category_name,
             'details'=>$request->category_details,
            ]);
+
            return redirect()->back()->with('success','Add Category Successfully');
+           Log::Channel('custom')->info("Category Created Succssfully");
+
+
+        
     }
 
     /**

@@ -12,12 +12,11 @@ class OrderController extends Controller
 {
     public function index()
     {
-
         $products=Product::all();
         $categories=Category::all();
         $brands=Brand::all();
         return view('admin.pages.orders.index',compact('products','categories','brands'));
-
-        
     }
+
+    
 }

@@ -57,8 +57,8 @@ class ProductController extends Controller
     Product::create([
                     'name'=>$request->name,
                     'image'=>$image_name,
-                    'category_id'=>$request->category,
-                    'brand_id'=>$request->brand,
+                    'categories_id'=>$request->category,
+                    'brands_id'=>$request->brand,
                     'price'=>$request->price,
                     'quantity'=>$request->quantity,
                     'details'=>$request->details,
@@ -127,7 +127,8 @@ class ProductController extends Controller
                 $product->update([
                     'name'=>$request->name,
                     'image'=>$image_name,
-                    'category_id'=>$request->category,
+                    'categories_id'=>$request->category,
+                    'brands_id'=>$request->brand,
                     'price'=>$request->price,
                     'quantity'=>$request->quantity,
                     'details'=>$request->details,

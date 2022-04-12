@@ -48,5 +48,8 @@ Route::resource('customers', CustomerController::class);
 //orders
 Route::get('orders/list', [OrderController::class, 'index'])->name('order.index');
 
+//add to cart
+Route::post('add/cart', [OrdeController::class, 'addToCart'])->name('add.cart');
+
 });
 
