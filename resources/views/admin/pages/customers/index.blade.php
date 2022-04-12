@@ -8,6 +8,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Image</th>
                         <th>City</th>
@@ -20,16 +21,23 @@
                     <tbody>
                         <tr>
                             <th>{{$key+1}}</th>
-                            <td> 
-                                <img src="{{url('/uploads/product/'.$customer->image)}}" width="100px" alt="Image">
-                            </td>
+
+                                
+                                <td><img src="{{url('/uploads/customers/'.$customer->image)}}" style="border-radius:4px" width="100px" alt="customer image"></td>
+                                
                                 <td>{{$customer->name}}</td>
                                 <td>{{$customer->city}}</td>
                                 <td>{{$customer->country}}</td>
                                 <td>
                                     <a href="{{route('customers.show',$customer->id)}}"><i class="fa fa-eye"></i></a>
                                     <a href="{{route('customers.edit',$customer->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="{{route('customers.delete',$customer->id)}}"><i class="fa-solid fa-trash"></i></a>
+                                    <form action="{{ route('customers.destroy', $customer->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                            <div>
+                                                <button ><i type="submit" class="fa fa-trash"></i></button>
+                                            </div>
+                                    </form>
                                 </td>
                         </tr>
                     </tbody>
@@ -40,7 +48,7 @@
         <div class="card" style="width: 50%; text-align:center; margin-left:3%;">
             <h2>Add Customers</h2>
             <hr>
-            <form action="{{route('customers.store')}}" method="POST">
+            <form action="{{route('customers.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-6 mb-4">
                     <label for="exampleInputname">Name</label>
@@ -70,12 +78,11 @@
                     <label for="exampleInputcountry">Country</label>
                     <input name="country" required type="text" class="form-control" id="exampleInputcountry"  placeholder="Enter Customer's Country">
                 </div>
-                <div class="form-group">
-					<div class="form-group">
-						<label for="image">Image:</label>
-						<input type="file" name="image" class="form-control" id="image">
-					</div>
-				</div>
+
+                <div class="col-md-6 mb-4">
+                    <label for="exampleInputimage">Image</label>
+                    <input name="cust_image" type="file" class="form-control" id="exampleInputimage"  placeholder="Select Image">
+                </div>
 
                 <button type="submit" class="btn btn-success" style="margin-top: 2%;">Submit</button>
             </form>

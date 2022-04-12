@@ -39,16 +39,17 @@ class CustomerController extends Controller
           //dd($request->all());
          //Image
         // dd(date('Ymdhms'));
+        
+
+      
         $image_name=null;
-        if($request->hasfile('image'))
-          {
-        $image_name=date('Ymdhis').'.'.$request->file('image')->getClientOriginalExtension();
-        // dd($image_name);
-        $request->file('image')->storeAs('/uploads/product',$image_name);
-         }
-
-
-
+        if($request->hasfile('cust_image'))
+        {
+            $image_name=date('Ymdhis').'.'.$request->file('cust_image')->getClientOriginalExtension();
+            // dd($image_name);
+            $request->file('cust_image')->storeAs('/uploads/customers',$image_name);
+    
+        }
 
         Customer::create([
             'name'=>$request->name,
@@ -58,7 +59,7 @@ class CustomerController extends Controller
             'phone'=>$request->phone,
             'city'=>$request->city,
             'country'=>$request->country,
-            'image'=>$request->$image_name,
+            'image'=>$image_name
            ]);
 
            return redirect()->back();
@@ -98,13 +99,24 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $edit=Customer::find($id);
+        
+        $image_name=$edit->image;
+        //              step 1: check image exist in this request.
+        if($request->hasfile('cust_image'))
+        {
+            $image_name=date('Ymdhis').'.'.$request->file('cust_image')->getClientOriginalExtension();
+            // dd($image_name);
+            $request->file('cust_image')->storeAs('/uploads/customers',$image_name);
+    
+        }
+
         $edit->update([
             'name'=>$request->name,
             'address'=>$request->address,
             'phone'=>$request->phone,
             'city'=>$request->city,
             'country'=>$request->country,
-            'image'=>$request->image,
+            'image'=>$image_name,
         ]);
         return redirect()->route('customers.index');
     }

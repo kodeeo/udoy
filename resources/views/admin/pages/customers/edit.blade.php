@@ -5,7 +5,11 @@
 <div class="card" style="text-align:center; margin-left:10%; margin-right:10%;">
             <h1>Update Customer Information</h1>
             <hr>
-            <form action="{{route('customers.update',$edit->id)}}" method="POST">
+
+            <img src="{{url('/uploads/customers/'.$edit->image)}}" width="300px" alt="Customer Image"></td>
+
+
+            <form action="{{route('customers.update',$edit->id)}}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="col-md-6 mb-4">
@@ -30,7 +34,7 @@
                 </div>
                 <div class="col-md-6 mb-4">
                 <label for="exampleInputimage">Image</label>
-                    <input name="image" class="form-control" id="exampleInputimage"  placeholder="">
+                    <input name="cust_image" type="file" class="form-control" id="exampleInputimage"  placeholder="">
                 </div>
 
                 <button type="submit" class="btn btn-success" style="margin-top: 2%;">Submit</button>

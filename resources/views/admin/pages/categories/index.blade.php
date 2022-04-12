@@ -21,8 +21,17 @@
                         <th>{{$key+1}}</th>
                           <td>{{$category->name}}</td>
                           <td>{{$category->details}}</td>
-                          <td><a href="{{route('category.edit',$category->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
-                              <a href="{{route('category.delete',$category->id)}}"><i class="fa-solid fa-trash"></i></a>
+                          <td>
+                                <a href="{{route('category.edit',$category->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                                <form action="{{ route('category.destroy', $category->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                        <div>
+                                            <button ><i type="submit" class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                </form>
+                                {{-- <a href="{{route('category.destroy',$category->id)}}"><i class="fa-solid fa-trash"></i></a> --}}
                           </td>
 
                         </tr>
@@ -52,5 +61,4 @@
             </form>
         </div>
 </div>
-
 @endsection

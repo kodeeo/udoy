@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,40 +19,34 @@ use App\Http\Controllers\BrandController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.master');
-});
-//product
-Route::get('/product/index',[ProductController::class,'index'])->name('product.index');
-Route::get('/products/add',[ProductController::class,'create'])->name('product.create');
-Route::post('/product/store',[ProductController::class,'store'])->name('product.store');
-Route::get('/delete/product/{id}',[ProductController::class,'destroy'])->name('product.delete');
-Route::get('/product/show/{id}',[ProductController::class,'show'])->name('product.show');
 
+
+Route::get('/admin/login',[UserController::class,'login'])->name('admin.login');
+Route::post('/admin/do/login',[UserController::class,'doLogin'])->name('admin.do.login');
+Route::get('/admin/registration',[UserController::class,'registration'])->name('admin.registration');
+Route::post('/admin/do/registration',[UserController::class,'registrationstore'])->name('admin.registration.store');
+Route::get('/admin/logout',[UserController::class,'logout'])->name('admin.logout');
+
+Route::group(['prefix'=>'/','middleware'=>'auth'], function (){
+
+
+Route::view('/','admin.master')->name('admin.master');
+
+
+//product
+Route::resource('products', ProductController::class);
 
 //brand
-Route::get('/brand/index',[BrandController::class,'index'])->name('brand.index');
-Route::post('/brand/store',[BrandController::class,'store'])->name('brand.store');
-Route::get('/brand/view',[BrandController::class,'show'])->name('brand.view');
-Route::get('/brand/edit',[BrandController::class,'edit'])->name('brand.edit');
-Route::put('/brand/update',[BrandController::class,'update'])->name('brand.update');
-Route::get('/delete/brand/{id}',[BrandController::class,'destroy'])->name('brand.delete');
+Route::resource('brands', BrandController::class);
 
 //cateogory
-Route::get('/add/category/',[CategoryController::class,'create'])->name('category.add');
-Route::get('/list/category/',[CategoryController::class,'index'])->name('category.index');
-Route::post('/store/category/',[CategoryController::class,'store'])->name('category.store');
-Route::get('/edit/category/{id}',[CategoryController::class,'edit'])->name('category.edit');
-Route::put('/update/category/{id}',[CategoryController::class,'update'])->name('category.update');
-Route::get('/delete/category/{id}',[CategoryController::class,'destroy'])->name('category.delete');
-
+Route::resource('category', CategoryController::class);
 
 //customers
-Route::get('/list/customers/',[CustomerController::class,'index'])->name('customers.index');
-Route::get('/add/customers/',[CustomerController::class,'create'])->name('customers.create');
-Route::post('/store/customers/',[CustomerController::class,'store'])->name('customers.store');
-Route::get('/show/customers/{id}',[CustomerController::class,'show'])->name('customers.show');
-Route::get('/edit/customers/{id}',[CustomerController::class,'edit'])->name('customers.edit');
-Route::put('/update/customers/{id}',[CustomerController::class,'update'])->name('customers.update');
-Route::get('/delete/customers/{id}',[CustomerController::class,'destroy'])->name('customers.delete');
+Route::resource('customers', CustomerController::class);
+
+//orders
+Route::get('orders/list', [OrderController::class, 'index'])->name('order.index');
+
+});
 

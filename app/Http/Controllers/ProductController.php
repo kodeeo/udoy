@@ -18,7 +18,9 @@ class ProductController extends Controller
      $products=Product::all();
      $p_category=Category::all();
      $p_brand=Brand::all();
-     return view('admin.pages.products.list',compact('products','p_category','p_brand'));
+
+     return view('admin.pages.product.index',compact('products','p_category','p_brand'));
+
     }
 
     /**
@@ -80,6 +82,7 @@ class ProductController extends Controller
     {
         $show=Product::find($id);
         return view('admin.pages.products.show',compact('show'));  
+
     }
 
     /**
@@ -90,7 +93,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product=Product::find($id);
+        
+        $categories=Category::all();
+        return view ('admin.pages.product.edit',compact('categories','product'));
     }
 
     /**
@@ -102,7 +108,33 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $product=Product::find($id);
+        // dd($request->all());
+        
+        $image_name=$product->image;
+        //              step 1: check image exist in this request.
+                if($request->hasFile('image'))
+                {
+                    // step 2: generate file name
+                    $image_name=date('Ymdhis') .'.'. $request->file('image')->getClientOriginalExtension();
+        
+                    //step 3 : store into project directory
+        
+                    $request->file('image')->storeAs('/uploads/product',$image_name);
+                }
+                $product=Product::find($id);
+                $product->update([
+                    'name'=>$request->name,
+                    'image'=>$image_name,
+                    'category_id'=>$request->category,
+                    'price'=>$request->price,
+                    'quantity'=>$request->quantity,
+                    'details'=>$request->details,
+                ]);
+                return redirect ()->route('product.index')->with('message','Product Updated');
+               
+                
     }
 
     /**
