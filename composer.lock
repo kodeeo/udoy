@@ -957,6 +957,7 @@
         },
         {
             "name": "laravel/framework",
+
             "version": "v9.7.0",
             "source": {
                 "type": "git",
@@ -967,6 +968,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/54c9696ee3e558ab29317ed6e0cb16bb9db5aad4",
                 "reference": "54c9696ee3e558ab29317ed6e0cb16bb9db5aad4",
+
                 "shasum": ""
             },
             "require": {
@@ -1132,6 +1134,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+
             "time": "2022-04-05T15:07:51+00:00"
         },
         {
@@ -1514,6 +1517,7 @@
         },
         {
             "name": "league/flysystem",
+
             "version": "3.0.14",
             "source": {
                 "type": "git",
@@ -1584,6 +1588,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
+
                 "source": "https://github.com/thephpleague/flysystem/tree/3.0.14"
             },
             "funding": [
@@ -1600,6 +1605,7 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2022-04-06T18:17:37+00:00"
         },
         {
@@ -5541,6 +5547,8 @@
         },
         {
             "name": "laravel/sail",
+
+
             "version": "v1.13.9",
             "source": {
                 "type": "git",
@@ -5597,6 +5605,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
+
             "time": "2022-04-04T15:21:51+00:00"
         },
         {
@@ -8020,5 +8029,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }

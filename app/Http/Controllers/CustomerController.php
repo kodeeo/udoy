@@ -36,6 +36,12 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+          //dd($request->all());
+         //Image
+        // dd(date('Ymdhms'));
+        
+
+      
         $image_name=null;
         if($request->hasfile('cust_image'))
         {
@@ -53,7 +59,7 @@ class CustomerController extends Controller
             'phone'=>$request->phone,
             'city'=>$request->city,
             'country'=>$request->country,
-            'image'=>$image_name,
+            'image'=>$image_name
            ]);
 
            return redirect()->back();

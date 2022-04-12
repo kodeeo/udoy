@@ -19,6 +19,8 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
+
+
 Route::get('/admin/login',[UserController::class,'login'])->name('admin.login');
 Route::post('/admin/do/login',[UserController::class,'doLogin'])->name('admin.do.login');
 Route::get('/admin/registration',[UserController::class,'registration'])->name('admin.registration');
