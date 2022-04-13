@@ -2,15 +2,16 @@
 @section('content')
 
 <div class="card" style="display: flex;">
-        <div class="card" style="text-align:center;">
+
+        <div class="card" style="text-align:center; width:55%">
             <h2>Customers</h2>
+            <hr>
             <table class="table table-bordered" style="background-color:#27a6a8;">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Image</th>
                         <th>Name</th>
-                        <th>Image</th>
                         <th>City</th>
                         <th>Country</th>
                         <th>Action</th>
@@ -21,8 +22,6 @@
                     <tbody>
                         <tr>
                             <th>{{$key+1}}</th>
-
-                                
                                 <td><img src="{{url('/uploads/customers/'.$customer->image)}}" style="border-radius:4px" width="100px" alt="customer image"></td>
                                 
                                 <td>{{$customer->name}}</td>
@@ -45,7 +44,7 @@
             </table>
         </div>
 
-        <div class="card" style="width: 50%; text-align:center; margin-left:3%;">
+        <div class="card" style="width: 45%; text-align:center; margin-left:3%;">
             <h2>Add Customers</h2>
             <hr>
             <form action="{{route('customers.store')}}" method="POST" enctype="multipart/form-data">
