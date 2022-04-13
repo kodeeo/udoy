@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->integer('category_id');
-            $table->integer('brand_id');
+            $table->integer('categories_id');
+            $table->integer('brands_id');
             $table->integer('price');
             $table->integer('quantity');
             $table->longText('details');

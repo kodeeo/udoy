@@ -13,11 +13,11 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(Category::class,'categories_id','id');
     }
 
     public function brands()
     {
-        return $this->belongsTo(Brand::class,'brand_id','id');
+        return $this->belongsTo(Brand::class,'brands_id','id');
     }
 }
