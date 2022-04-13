@@ -49,7 +49,8 @@ Route::resource('customers', CustomerController::class);
 Route::get('orders/list', [OrderController::class, 'index'])->name('order.index');
 
 //add to cart
-Route::post('add/cart', [OrdeController::class, 'addToCart'])->name('add.cart');
+Route::get('add/cart/{product}', [OrderController::class, 'addToCart'])->name('addToCart');
+Route::get('remove/cart/{id}', [OrderController::class, 'removeFromCart'])->name('remove');
 
 });
 
