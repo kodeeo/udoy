@@ -53,7 +53,6 @@ class OrderController extends Controller
             
 
         $cart[$product->id] = [
-
                         'name' => $product->name,
                         'price' => $product->price,
                         'quantity' => 1,

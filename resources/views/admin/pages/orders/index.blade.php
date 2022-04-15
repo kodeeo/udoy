@@ -14,10 +14,10 @@
         <h2>Add To Cart</h2>
         <hr>
         
-                <div style="display: flex;">
+                <div class="row">
                     @foreach($products as $product) 
-                        <div class="card" style="margin:5px; border-style: solid; border-color: #a5a5a5; border-radius: 10px; background: #27a6a8">
-                                <img src="{{url('/uploads/product/'.$product->image)}}" width="120px" alt="Image" style="border-radius: 8%;">
+                        <div class="col-lg-3" style="margin:5px; width:20%; border-style: solid; border-color: #a5a5a5; border-radius: 10px; background: #27a6a8">
+                                <img src="{{url('/uploads/product/'.$product->image)}}" width="100px" alt="Image" style="border-radius: 8%;">
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li><b>{{$product->name}}</b></li>
                                     <li><b>BDT: {{$product->price}}</b></li>
