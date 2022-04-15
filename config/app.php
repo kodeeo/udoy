@@ -141,6 +141,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Milon\Barcode\BarcodeServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
@@ -192,7 +193,11 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
+        
     ])->toArray(),
 
 ];

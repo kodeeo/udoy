@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
@@ -51,6 +52,9 @@ Route::get('orders/list', [OrderController::class, 'index'])->name('order.index'
 //add to cart
 Route::get('add/cart/{product}', [OrderController::class, 'addToCart'])->name('addToCart');
 Route::get('remove/cart/{id}', [OrderController::class, 'removeFromCart'])->name('remove');
+
+//barcode
+Route::resource('barcode', BarcodeController::class);
 
 });
 
