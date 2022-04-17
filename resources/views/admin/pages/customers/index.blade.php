@@ -2,8 +2,10 @@
 @section('content')
 
 <div class="card" style="display: flex;">
-        <div class="card" style="text-align:center;">
+
+        <div class="card" style="text-align:center; width:55%">
             <h2>Customers</h2>
+            <hr>
             <table class="table table-bordered" style="background-color:#27a6a8;">
                 <thead>
                     <tr>
@@ -20,7 +22,6 @@
                     <tbody>
                         <tr>
                             <th>{{$key+1}}</th>
-                                
                                 <td><img src="{{url('/uploads/customers/'.$customer->image)}}" style="border-radius:4px" width="100px" alt="customer image"></td>
                                 
                                 <td>{{$customer->name}}</td>
@@ -43,7 +44,7 @@
             </table>
         </div>
 
-        <div class="card" style="width: 50%; text-align:center; margin-left:3%;">
+        <div class="card" style="width: 45%; text-align:center; margin-left:3%;">
             <h2>Add Customers</h2>
             <hr>
             <form action="{{route('customers.store')}}" method="POST" enctype="multipart/form-data">
@@ -76,6 +77,7 @@
                     <label for="exampleInputcountry">Country</label>
                     <input name="country" required type="text" class="form-control" id="exampleInputcountry"  placeholder="Enter Customer's Country">
                 </div>
+
                 <div class="col-md-6 mb-4">
                     <label for="exampleInputimage">Image</label>
                     <input name="cust_image" type="file" class="form-control" id="exampleInputimage"  placeholder="Select Image">

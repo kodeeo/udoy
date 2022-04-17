@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use Milon\Barcode\DNS1D;
+use Milon\Barcode\DNS2D;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Brian2694\Toastr\Facades\Toastr;
 
-
-class CategoryController extends Controller
+class BarcodeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +15,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //throw new \Exception("Laravel Log");
-        Log::Channel('custom1')->warning("Hello on custom1 log file");
-
-        $categories=Category::all();
-        return view('admin.pages.categories.index',compact('categories'));
+        $code = date('sms').mt_rand(10000,99999);
+        $bar = DNS1D::getBarcodeHTML($code, 'I25');
+        
+        return view('admin.pages.barcodes.index',compact('bar','code'));
     }
 
     /**
@@ -42,21 +39,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'category_name'=>'required',
-            'category_details'=>'required',
-        ]);
-
-        Category::create([
-            'name'=>$request->category_name,
-            'details'=>$request->category_details,
-           ]);
-
-           return redirect()->back()->with('success','Add Category Successfully');
-           Log::Channel('custom')->info("Category Created Succssfully");
-
-
-        
+        //
     }
 
     /**
@@ -78,8 +61,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $edit_category=Category::find($id);
-        return view('admin.pages.categories.edit',compact('edit_category'));
+        //
     }
 
     /**
@@ -91,12 +73,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $edit_category=Category::find($id);
-        $edit_category->update([
-            'name'=>$request->category_name,
-            'details'=>$request->category_details,
-        ]);
-        return redirect()->route('category.index');
+        //
     }
 
     /**
@@ -107,8 +84,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category=Category::find($id)->delete();
-        Toastr::success('Deleted');
-        return redirect()->back();
+        //
     }
 }
