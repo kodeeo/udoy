@@ -56,5 +56,7 @@ Route::get('remove/cart/{id}', [OrderController::class, 'removeFromCart'])->name
 //barcode
 Route::resource('barcode', BarcodeController::class);
 
+Route::get('calculate/', [OrderController::class, 'calculate'])->name('calculate');
+
 });
 

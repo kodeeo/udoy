@@ -24,7 +24,6 @@ class OrderController extends Controller
         $cart = session()->get('cart');
         // dd($cart);
         
-
         if(!$cart) 
         
             {
@@ -66,12 +65,30 @@ class OrderController extends Controller
     public function removeFromCart($id)
     {
         $cart = session()->get('cart');
+        //dd($paid);
 
         if (isset($cart[$id]))
         {
             unset($cart[$id]);
             session()->put('cart', $cart);
         }
+        return redirect()->back();
+    }
+
+    public function calculate(Request $request)
+    {
+        $paid = session()->get('paid');
+        
+        $request->session()->regenerate();
+
+        $paid = [
+                'paid'=> $request->paid,
+                ];
+
+            session()->put('paid', $paid);
+        
+        // dd(session()->get('paid'));
+
         return redirect()->back();
     }
 
