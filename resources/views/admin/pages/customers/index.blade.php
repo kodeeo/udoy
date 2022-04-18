@@ -5,6 +5,10 @@
 
         <div class="card" style="text-align:center; width:55%">
             <h2>Customers</h2>
+            <form action="{{route('customers.index')}}" method="GET">
+    <input name="search" class="search-input" type="text" placeholder="Customer Name" aria-label="Search">
+    <button style="background-color:rgb(39, 166, 168);" type="submit"><i class='fas fa-search'></i></button>
+    </form>
             <hr>
             <table class="table table-bordered" style="background-color:#27a6a8;">
                 <thead>

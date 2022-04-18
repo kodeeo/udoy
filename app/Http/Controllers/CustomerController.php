@@ -14,7 +14,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers=Customer::all();
+        $key=request()->search;
+        $customers=Customer::where('name','LIKE',"%{$key}%")->get();
         return view('admin.pages.customers.index',compact('customers'));
     }
 

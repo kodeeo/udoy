@@ -18,9 +18,10 @@ class CategoryController extends Controller
     public function index()
     {
         //throw new \Exception("Laravel Log");
+        $key=request()->search;
         Log::Channel('custom1')->warning("Hello on custom1 log file");
 
-        $categories=Category::all();
+        $categories=Category::where('name','LIKE',"%{$key}%")->get();
         return view('admin.pages.categories.index',compact('categories'));
     }
 

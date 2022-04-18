@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-     $products=Product::all();
+        $key=request()->search;
+     $products=Product::where('name','LIKE',"%{$key}%")->get();
      $p_category=Category::all();
      $p_brand=Brand::all();
 

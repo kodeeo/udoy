@@ -13,6 +13,10 @@
 
     <div class="card" style="text-align:center; width:55%">
         <h2>Products</h2>
+        <form action="{{route('products.index')}}" method="GET">
+    <input name="search" class="search-input" type="text" placeholder="Product Name" aria-label="Search">
+    <button style="background-color:rgb(39, 166, 168);" type="submit"><i class='fas fa-search'></i></button>
+    </form>
         <hr>
 
         <table class="table table-bordered" style="background-color:#27a6a8; margin-right:95px;">
