@@ -2,6 +2,7 @@
 @section('content')
 
 
+
 @if(session()->has('success'))
 <p class="alert alert-success">
     {{session()->get('success')}}
@@ -40,47 +41,96 @@
                         <th>Price</th>
                         <th>Qty.</th>
                         <th>Subtotal</th>
+                        <th>Action</th>
                     </tr>
                </thead>
 
                <tbody>
                    @php
                         $total = 0;
+                        $change = 0;
                    @endphp
 
                    @if(session('cart'))
                         @foreach (session('cart') as $id => $product)
                         {{-- @dd(session()->all()) --}}
 
-                        @php
-                            
-                            $subtotal = $product['price'] * $product['quantity'];
-                            $total += $subtotal;
-                        @endphp
+                            @php
+                                $subtotal = $product['price'] * $product['quantity'];
+                                $total += $subtotal;
+                            @endphp
 
-                        <tr>
-                            <td>
-                                <img src="{{url('/uploads/product/'.$product['image'])}}" width="80px;" alt="{{$product['name']}}">
-                            </td>
-                            <td>{{$product['price']}}</td>
-                            <td>{{$product['quantity']}}</td>
-                            <td>{{$subtotal}}</td>
-                            <td>
-                                <a href="{{route('remove', [$id])}}" class="btn btn-sm btn-danger">X</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <img src="{{url('/uploads/product/'.$product['image'])}}" width="80px;" alt="{{$product['name']}}">
+                                </td>
+                                <td>{{$product['price']}}</td>
+                                <td>{{$product['quantity']}}</td>
+                                <td>{{$subtotal}}</td>
+                                <td>
+                                    <a href="{{route('remove', [$id])}}" class="btn btn-sm btn-danger">X</a>
+                                </td>
+                            </tr>
                         @endforeach
                     @endif
                    
                </tbody>
+
+               
                <tfoot>
                    <tr>
                         {{-- <td>
                             <a href="#" class="btn btn-success">Continue Shopping</a>
                         </td> --}}
-                        <td colspan="3"><strong>Total Price</strong></td> 
-                       <td>{{$total}}</td>
+                        <td colspan="3"><strong>Total Amount</strong></td> 
+                        <td>{{$total}}</td>
+
+                        {{-- @dd(session()->all()) --}}
                    </tr>
+
+                   
+
+                   <tr>
+                        <td colspan="3"><strong>Paid</strong></td> 
+                        <td>
+                            
+                                {{-- @dd($paid) --}}
+                            
+                                <form action="{{route('calculate')}}">
+                                    @csrf
+                                        <div>
+                                            <input type="number" name="paid"  style="width: 70px">
+                                        </div>
+                                </form>
+
+                        </td>
+                   </tr>
+                            @if(session('paid') && session('cart'))
+                                @foreach (session('paid') as $paid)
+
+                   
+                                    @php
+                                        if ($paid ) 
+                                            {
+                                                $change = $paid - $total;
+                                            } 
+                                                else 
+
+                                            {
+                                                $change = 0;
+                                            }
+                                    @endphp
+                                    @endforeach
+                            
+                                    <tr>
+                                        <td colspan="3"><strong>Change</strong></td> 
+                                        <td>{{$change}}</td>
+                                    </tr>
+                            
+
+                    @endif
+
+                    {{-- @dd(session()->all()) --}}
                </tfoot>
            </table>
     </div>
