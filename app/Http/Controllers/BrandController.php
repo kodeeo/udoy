@@ -14,7 +14,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands=Brand::all();
+        $key=request()->search;
+        $brands=Brand::where('name','LIKE',"%{$key}%")->get();
         return view('admin.pages.brands.index',compact('brands'));
     }
 
