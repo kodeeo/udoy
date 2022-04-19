@@ -14,6 +14,11 @@
     <div class="card" style="text-align:center; width:55%">
         <h2>Add To Cart</h2>
         <hr>
+        <form action="{{route('order.index')}}" method="GET">
+            <input name="search" class="search-input" type="text" placeholder="Product Name" aria-label="Search">
+            <button style="background-color:rgb(39, 166, 168);" type="submit"><i class='fas fa-search'></i></button>
+        </form>
+        <br>
         
                 <div class="row">
                     @foreach($products as $product) 
@@ -88,26 +93,25 @@
                         {{-- @dd(session()->all()) --}}
                    </tr>
 
-                   
+                   @if(session('paid'))
+                        @foreach (session('paid') as $paid)
+                            <tr>
+                                    <td colspan="3"><strong>Paid</strong></td> 
+                                    <td>
+                                        {{-- @dd($paid) --}}
+                                        <form action="{{route('calculate')}}">
+                                            @csrf
+                                            <div>
+                                                <input type="number" name="paid"  placeholder="{{$paid}}" style="width: 70px">
+                                            </div>
+                                        </form>
+                                    </td>
+                            </tr>
+                        @endforeach
+                   @endif
 
-                   <tr>
-                        <td colspan="3"><strong>Paid</strong></td> 
-                        <td>
-                            
-                                {{-- @dd($paid) --}}
-                            
-                                <form action="{{route('calculate')}}">
-                                    @csrf
-                                        <div>
-                                            <input type="number" name="paid"  style="width: 70px">
-                                        </div>
-                                </form>
-
-                        </td>
-                   </tr>
                             @if(session('paid') && session('cart'))
                                 @foreach (session('paid') as $paid)
-
                    
                                     @php
                                         if ($paid ) 
@@ -120,7 +124,7 @@
                                                 $change = 0;
                                             }
                                     @endphp
-                                    @endforeach
+                                @endforeach
                             
                                     <tr>
                                         <td colspan="3"><strong>Change</strong></td> 
@@ -128,7 +132,7 @@
                                     </tr>
                             
 
-                    @endif
+                            @endif
 
                     {{-- @dd(session()->all()) --}}
                </tfoot>
