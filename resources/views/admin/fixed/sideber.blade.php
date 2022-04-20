@@ -14,7 +14,7 @@
 
       <li><a href="{{route('order.index')}}"><i class="fa fa-font"></i> Orders</a></li>
       <li><a href=""><i class="fa-solid fa-magnifying-glass"></i>Order Details</a></li>
-      <li><a href="{{route('barcode.index')}}"><i class="fa-solid fa-magnifying-glass"></i>Bracodes</a></li>
+      <li><a href="{{route('barcodes.index')}}"><i class="fa-solid fa-magnifying-glass"></i>Bracodes</a></li>
       <li><a href=""><i class="fa-solid fa-arrow-trend-up"></i> Stocks Information</a></li>
       <li><a href=""><i class="fa fa-file"></i> Sales</a></li>
       <li><a href=""><i class="fa fa-file"></i> Payments</a></li>
@@ -37,6 +37,19 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right navbar-user">
+      <li>
+        <label for="">{{__('Select Language')}}</label>
+      <div class="col-md-4">
+        <select class="form-control" size="1" name="links" onchange="window.location.href=this.value;">
+            <option value="">Select language</option>
+            <option value="{{route('language','en')}}">EN</option>
+            <option value="{{route('language','bn')}}">BN</option>
+            <option value="{{route('language','ar')}}">AR</option>
+        </select>
+
+
+    </div>
+      </li>
       <li class="dropdown user-dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{auth()->user()->name}}<b class="caret"></b></a>
         <ul class="dropdown-menu">

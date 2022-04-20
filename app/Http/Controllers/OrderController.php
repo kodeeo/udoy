@@ -12,7 +12,9 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+
+        $key=request()->search;
+        $products=Product::where('name','LIKE',"%{$key}%")->get();
         $categories = Category::all();
         $brands = Brand::all();
         return view('admin.pages.orders.index',compact('products','categories','brands'));

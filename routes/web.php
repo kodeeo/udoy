@@ -54,9 +54,12 @@ Route::get('add/cart/{product}', [OrderController::class, 'addToCart'])->name('a
 Route::get('remove/cart/{id}', [OrderController::class, 'removeFromCart'])->name('remove');
 
 //barcode
-Route::resource('barcode', BarcodeController::class);
+Route::resource('barcodes', BarcodeController::class);
 
 Route::get('calculate/', [OrderController::class, 'calculate'])->name('calculate');
+
+//
+Route::get('language/{local}',[BarcodeController::class, 'changeLanguage'])->name('language');
 
 });
 
