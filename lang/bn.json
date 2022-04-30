@@ -1,0 +1,19 @@
+{
+    "Home" : "হোম",
+    "Categories" : "বিভাগসমূহ", 
+    "Select Language" : "ভাষা পরিবর্তন ",
+    "English" : "ইংরেজী",
+    "Bengali" : "বাংলা",
+    "Add To Cart" : "পণ্য তালিকা",
+    "Cart" : "কার্ট",
+    "Product Name" : "পণ্যের নাম",
+    "Customer" : "গ্রাহক",
+    "Customer's Name" : "গ্রাহকের নাম",
+    "Add Customers" : "গ্রাহক নিযুক্ত করুন",
+    "Customers" : "গ্রাহকগণ",
+    "Category" : "বিভাগসমূহ",
+    "Product" : "পণ্য",
+    "Brand" : "ব্র্যান্ড",
+    "Orders" : "অর্ডার",
+    "Order Details" : "অর্ডারের বিবরণ"
+}

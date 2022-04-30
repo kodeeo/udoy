@@ -3,17 +3,16 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav side-nav">
-        <li class="active"><a href=""><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="{{route('customers.index')}}"><i class="fa fa-dashboard"></i>Customer</a></li>
-        <li><a href="{{route('category.index')}}"><i class="fa-brands fa-buffer"></i> Category</a></li>
+        <li><a href="{{route('customers.index')}}"><i class="fa fa-dashboard"></i>{{__("Customer")}}</a></li>
+        <li><a href="{{route('category.index')}}"><i class="fa-brands fa-buffer"></i>{{__("Category")}}</a></li>
       </li>
 
 
-      <li><a href="{{route('products.index')}}"><i class="fa-solid fa-shirt"></i>Product</a></li>
-      <li><a href="{{route('brands.index')}}"><i class="fa-solid fa-shirt"></i>Brand</a></li>
+      <li><a href="{{route('products.index')}}"><i class="fa-solid fa-shirt"></i>{{__("Product")}}</a></li>
+      <li><a href="{{route('brands.index')}}"><i class="fa-solid fa-shirt"></i>{{__("Brand")}}</a></li>
 
-      <li><a href="{{route('order.index')}}"><i class="fa fa-font"></i> Orders</a></li>
-      <li><a href=""><i class="fa-solid fa-magnifying-glass"></i>Order Details</a></li>
+      <li><a href="{{route('cart.index')}}"><i class="fa fa-font"></i> {{__("Orders")}}</a></li>
+      <li><a href="{{route('orders.index')}}"><i class="fa-solid fa-magnifying-glass"></i>{{__("Order Details")}}</a></li>
       <li><a href="{{route('barcodes.index')}}"><i class="fa-solid fa-magnifying-glass"></i>Bracodes</a></li>
       <li><a href=""><i class="fa-solid fa-arrow-trend-up"></i> Stocks Information</a></li>
       <li><a href=""><i class="fa fa-file"></i> Sales</a></li>
@@ -38,18 +37,15 @@
 
     <ul class="nav navbar-nav navbar-right navbar-user">
       <li>
-        <label for="">{{__('Select Language')}}</label>
-      <div class="col-md-4">
-        <select class="form-control" size="1" name="links" onchange="window.location.href=this.value;">
-            <option value="">Select language</option>
-            <option value="{{route('language','en')}}">EN</option>
-            <option value="{{route('language','bn')}}">BN</option>
-            <option value="{{route('language','ar')}}">AR</option>
-        </select>
-
-
-    </div>
+          <div class="col-md-4">
+            <select style="margin-top: 10px; padding: 6px;" size="1" name="links" onchange="window.location.href=this.value;">
+                <option value="">{{__('Select Language')}}</option>
+                <option value="{{route('language','en')}}">{{__('English')}}</option>
+                <option value="{{route('language','bn')}}">{{__('Bengali')}}</option>
+            </select>
+          </div>
       </li>
+
       <li class="dropdown user-dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{auth()->user()->name}}<b class="caret"></b></a>
         <ul class="dropdown-menu">

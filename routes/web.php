@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrderController;
@@ -47,19 +48,23 @@ Route::resource('category', CategoryController::class);
 Route::resource('customers', CustomerController::class);
 
 //orders
-Route::get('orders/list', [OrderController::class, 'index'])->name('order.index');
+Route::resource('orders', OrderController::class);
+Route::get('order/clear', [OrderController::class, 'orderClear'])->name('order.clear');
 
 //add to cart
-Route::get('add/cart/{product}', [OrderController::class, 'addToCart'])->name('addToCart');
-Route::get('remove/cart/{id}', [OrderController::class, 'removeFromCart'])->name('remove');
+Route::resource('cart', CartController::class);
+
+Route::get('add/cart/{product}', [CartController::class, 'addToCart'])->name('addToCart');
+Route::get('remove/cart/{id}', [CartController::class, 'removeFromCart'])->name('remove');
 
 //barcode
 Route::resource('barcodes', BarcodeController::class);
 
-Route::get('calculate/', [OrderController::class, 'calculate'])->name('calculate');
+Route::get('calculate/', [CartController::class, 'calculate'])->name('calculate');
 
 //
 Route::get('language/{local}',[BarcodeController::class, 'changeLanguage'])->name('language');
+Route::post('barcodes/clear',[BarcodeController::class, 'clearBarcodes'])->name('clear');
 
 });
 

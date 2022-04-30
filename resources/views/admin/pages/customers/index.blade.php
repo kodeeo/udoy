@@ -4,9 +4,9 @@
 <div class="card" style="display: flex;">
 
         <div class="card" style="text-align:center; width:55%">
-            <h2>Customers</h2>
+            <h2>{{__("Customers")}}</h2>
             <form action="{{route('customers.index')}}" method="GET">
-    <input name="search" class="search-input" type="text" placeholder="Customer Name" aria-label="Search">
+    <input name="search" class="search-input" type="text" placeholder="{{__("Customer's Name")}}" aria-label="Search">
     <button style="background-color:rgb(39, 166, 168);" type="submit"><i class='fas fa-search'></i></button>
     </form>
             <hr>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="card" style="width: 45%; text-align:center; margin-left:3%;">
-            <h2>Add Customers</h2>
+            <h2>{{__("Add Customers")}}</h2>
             <hr>
             <form action="{{route('customers.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf

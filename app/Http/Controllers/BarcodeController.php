@@ -20,10 +20,10 @@ class BarcodeController extends Controller
     public function index()
     {
         $barcodes=Barcode::all();
+        //dd($barcodes);
         // $code = date('sms').mt_rand(10000,99999);
-        $bar = DNS1D::getBarcodeHTML('10000000000', 'I25');
         
-        return view('admin.pages.barcodes.index',compact('bar','barcodes'));
+        return view('admin.pages.barcodes.index',compact('barcodes'));
     }
 
     /**
@@ -44,8 +44,10 @@ class BarcodeController extends Controller
      */
     public function store(Request $request)
     {
-        Barcode::create([
-            'barcode'=> '10000000'
+        $string= rand(1000000,9000000);
+        //$code= preg_replace('/[^0-9]/', '', $string);
+        Barcode::insert([
+            'barcode'=> $string
         ]);
 
         return redirect()->back();
@@ -101,6 +103,12 @@ class BarcodeController extends Controller
         App::setLocale($locale);
         session()->put('applocale', $locale);
         // dd($locale);
+        return redirect()->back();
+    }
+
+    public function clearBarcodes()
+    {
+        Barcode::truncate();
         return redirect()->back();
     }
 }
