@@ -59,12 +59,15 @@ Route::get('remove/cart/{id}', [CartController::class, 'removeFromCart'])->name(
 
 //barcode
 Route::resource('barcodes', BarcodeController::class);
+Route::post('barcodes/clear',[BarcodeController::class, 'clearBarcodes'])->name('clear');
 
 Route::get('calculate/', [CartController::class, 'calculate'])->name('calculate');
 
-//
+//localization
 Route::get('language/{local}',[BarcodeController::class, 'changeLanguage'])->name('language');
-Route::post('barcodes/clear',[BarcodeController::class, 'clearBarcodes'])->name('clear');
+
+
+Route::get('database/download',[UserController::class, 'exportDB'])->name('database.download');
 
 });
 
