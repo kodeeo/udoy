@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\DbDumper\Databases\MySql;
 
 class UserController extends Controller
 {
@@ -47,6 +48,18 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect()->route('admin.login')->with('success','Logging out.');
+    }
+
+    public function exportDB()
+    {
+        // dd(config('database.connections.mysql.database'));
+        MySql::create()
+        ->setDbName(config('database.connections.mysql.database'))
+        ->setUserName(config('database.connections.mysql.username'))
+        ->setPassword(config('database.connections.mysql.password'))
+        ->dumpToFile('udoy.sql');
+
+        return response()->download(public_path('/udoy.sql'));
     }
 
 }

@@ -14,6 +14,7 @@
       <li><a href="{{route('cart.index')}}"><i class="fa fa-font"></i> {{__("Orders")}}</a></li>
       <li><a href="{{route('orders.index')}}"><i class="fa-solid fa-magnifying-glass"></i>{{__("Order Details")}}</a></li>
       <li><a href="{{route('barcodes.index')}}"><i class="fa-solid fa-magnifying-glass"></i>Bracodes</a></li>
+      <li><a href="{{route('database.download')}}"><i class="fa fa-cloud-download"></i>Export DB</a></li>
       <li><a href=""><i class="fa-solid fa-arrow-trend-up"></i> Stocks Information</a></li>
       <li><a href=""><i class="fa fa-file"></i> Sales</a></li>
       <li><a href=""><i class="fa fa-file"></i> Payments</a></li>
